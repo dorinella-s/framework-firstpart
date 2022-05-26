@@ -18,6 +18,7 @@ namespace ProjectPlanAutomation.PageObject
         }
 
         private IWebElement _yesBTN => webDriver.FindElement(By.XPath("//input[@type = 'submit']"));
+        private IWebElement _noBTN => webDriver.FindElement(By.Id("idBtn_Back"));
         public void ClickYesButton()
         {
             wait.Until(ExpectedConditions
@@ -25,6 +26,12 @@ namespace ProjectPlanAutomation.PageObject
                 .Click();
         }
 
+        public void ClickNoButton()
+        {
+            wait.Until(ExpectedConditions
+                .ElementToBeClickable(_noBTN))
+                .Click();
+        }
 
     }
 }

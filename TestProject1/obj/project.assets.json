@@ -5828,11 +5828,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\InternshipTask\\framework\\Automated-Test\\AutomatedTest\\TestProject1\\ProjectPlanAutomation.csproj",
+      "projectUniqueName": "D:\\InternshipTask\\editframework\\framework-firstpart\\TestProject1\\ProjectPlanAutomation.csproj",
       "projectName": "ProjectPlanAutomation",
-      "projectPath": "D:\\InternshipTask\\framework\\Automated-Test\\AutomatedTest\\TestProject1\\ProjectPlanAutomation.csproj",
+      "projectPath": "D:\\InternshipTask\\editframework\\framework-firstpart\\TestProject1\\ProjectPlanAutomation.csproj",
       "packagesPath": "C:\\Users\\Asus\\.nuget\\packages\\",
-      "outputPath": "D:\\InternshipTask\\framework\\Automated-Test\\AutomatedTest\\TestProject1\\obj\\",
+      "outputPath": "D:\\InternshipTask\\editframework\\framework-firstpart\\TestProject1\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Asus\\AppData\\Roaming\\NuGet\\NuGet.Config",

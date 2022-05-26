@@ -5,6 +5,7 @@ using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using TechTalk.SpecFlow;
 
 namespace ProjectPlanAutomation
 {
@@ -13,7 +14,7 @@ namespace ProjectPlanAutomation
         protected IWebDriver webDriver;
         protected WebDriverWait wait;
 
-        [SetUp]
+        [BeforeScenario]
         public void SetUpDriver()
         {
             ChromeOptions options = new ChromeOptions();
@@ -26,7 +27,7 @@ namespace ProjectPlanAutomation
             wait = new WebDriverWait(webDriver, TimeSpan.FromSeconds(30));
         }
 
-        [TearDown]
+        [AfterScenario]
         public void TearDown()
         {
             webDriver.Close();

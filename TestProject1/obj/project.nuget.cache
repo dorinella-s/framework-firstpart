@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "uh5RYy11YtidKmBQsWZ6+sr3uMmc1ixLv4WczXx5vf0gBArCD70PpFr5t/AFUT24G62l9OblAhrra/do7U84bg==",
+  "dgSpecHash": "P04svt2MWb2B4j1RadSSCpYh0w/Mb/VXd1fDYPlDXg+7+ihMY4etjpqfd3AA5ieQSkNdmaIy0B7aw0H/NkGCng==",
   "success": true,
-  "projectFilePath": "D:\\InternshipTask\\framework\\Automated-Test\\AutomatedTest\\TestProject1\\ProjectPlanAutomation.csproj",
+  "projectFilePath": "D:\\InternshipTask\\editframework\\framework-firstpart\\TestProject1\\ProjectPlanAutomation.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Asus\\.nuget\\packages\\bodi\\1.5.0\\bodi.1.5.0.nupkg.sha512",
     "C:\\Users\\Asus\\.nuget\\packages\\coverlet.collector\\3.1.2\\coverlet.collector.3.1.2.nupkg.sha512",
