@@ -22,7 +22,7 @@ namespace ProjectPlanAutomation.PageObject
         private IWebElement _entityTypeItem => webDriver.FindElement(By.XPath("//mat-select[@formcontrolname = 'typeId' or @placeholder = 'Entity Type']"));
         private IWebElement _entityTypeElement => webDriver.FindElement(By.CssSelector("mat-option:nth-child(2)>span.mat-option-text"));
         private IWebElement _oportunityType => webDriver.FindElement(By.CssSelector("mat-option:nth-child(2)>span.mat-option-text"));
-
+        private IWebElement _financeBTN => webDriver.FindElement(By.CssSelector("a#finance-tab"));
         public void GetUserHelloText(string exceptedResult)
         {
             string actualResultStartText = wait.Until(ExpectedConditions
@@ -66,8 +66,13 @@ namespace ProjectPlanAutomation.PageObject
                 .Click();
         }
 
-        
+        public void ClickFinanceBTN()
+        {
+            wait.Until(ExpectedConditions
+                .ElementToBeClickable(_financeBTN))
+                .Click();
+        }
 
-        
+
     }
 }
