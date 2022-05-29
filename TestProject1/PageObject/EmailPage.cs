@@ -26,6 +26,10 @@ namespace ProjectPlanAutomation.PageObject
         {
             wait.Until(ExpectedConditions
                 .ElementToBeClickable(_emailField))
+                .Clear();
+
+            wait.Until(ExpectedConditions
+                .ElementToBeClickable(_emailField))
                 .SendKeys(email);
         }
         public void PressNextBTN()

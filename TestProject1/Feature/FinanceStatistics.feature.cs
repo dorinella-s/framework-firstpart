@@ -20,8 +20,8 @@ namespace ProjectPlanAutomation.Feature
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.9.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("FinanceStatistics")]
-    public partial class FinanceStatisticsFeature
+    [NUnit.Framework.DescriptionAttribute("Finance Page, Statistics category")]
+    public partial class FinancePageStatisticsCategoryFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
@@ -35,7 +35,7 @@ namespace ProjectPlanAutomation.Feature
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Feature", "FinanceStatistics", null, ProgrammingLanguage.CSharp, featureTags);
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Feature", "Finance Page, Statistics category", null, ProgrammingLanguage.CSharp, featureTags);
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -73,47 +73,28 @@ namespace ProjectPlanAutomation.Feature
             testRunner.CollectScenarioErrors();
         }
         
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Acces Finance Statistics page")]
-        [NUnit.Framework.CategoryAttribute("positive")]
-        public void AccesFinanceStatisticsPage()
+        public virtual void FeatureBackground()
         {
-            string[] tagsOfScenario = new string[] {
-                    "positive"};
-            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Acces Finance Statistics page", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 4
-this.ScenarioInitialize(scenarioInfo);
 #line hidden
-            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
-            {
-                testRunner.SkipScenario();
-            }
-            else
-            {
-                this.ScenarioStart();
 #line 5
- testRunner.Given("i am logged into Advance", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+    testRunner.Given("i am Logged in and i am on Finance page on Statistics category", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 6
- testRunner.And("i am on Advance home page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 7
- testRunner.When("i click Finance button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 8
- testRunner.Then("i should see \'Statistics\' tab", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-            }
-            this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Add Actuals on Statistic page")]
-        [NUnit.Framework.TestCaseAttribute("2021", "MAY", "12", "1", "Actuals have successfully been created.", null)]
+        [NUnit.Framework.CategoryAttribute("AddActuals")]
+        [NUnit.Framework.TestCaseAttribute("2026", "MAY", "15", "1", "Actuals have successfully been created.", null)]
         public void AddActualsOnStatisticPage(string year, string month, string averageRate, string revenue, string popUptext, string[] exampleTags)
         {
-            string[] tagsOfScenario = exampleTags;
+            string[] @__tags = new string[] {
+                    "AddActuals"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            string[] tagsOfScenario = @__tags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             argumentsOfScenario.Add("year", year);
             argumentsOfScenario.Add("month", month);
@@ -121,7 +102,7 @@ this.ScenarioInitialize(scenarioInfo);
             argumentsOfScenario.Add("revenue", revenue);
             argumentsOfScenario.Add("popUptext", popUptext);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add Actuals on Statistic page", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 12
+#line 8
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -131,34 +112,127 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 13
- testRunner.Given("i am logged into Advance", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 4
+this.FeatureBackground();
 #line hidden
-#line 14
- testRunner.And("i am on Advance home page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 9
+ testRunner.When("i click Add Actual button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 15
- testRunner.When("i click Finance button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 16
- testRunner.And("i click Statistics tab", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 17
- testRunner.And("i click Add Actual button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 18
+#line 10
  testRunner.And(string.Format("i choose year \'{0}\' and \'{1}\' month", year, month), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 19
+#line 11
  testRunner.And(string.Format("i write average {0}", averageRate), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 20
+#line 12
  testRunner.And(string.Format("i write revenue {0}", revenue), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 21
+#line 13
  testRunner.And("i click Save button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
+#line 14
+ testRunner.Then(string.Format("i sould see confirmation popup with {0}", popUptext), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Edit a specific Actuals on Statistic page")]
+        [NUnit.Framework.CategoryAttribute("EditActuals")]
+        [NUnit.Framework.TestCaseAttribute("Mar 2019", "1", "2020", "MAY", "13", "2", "Actuals have successfully been updated.", null)]
+        public void EditASpecificActualsOnStatisticPage(string info, string id, string year, string month, string averageRate, string revenue, string popUptext, string[] exampleTags)
+        {
+            string[] @__tags = new string[] {
+                    "EditActuals"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            string[] tagsOfScenario = @__tags;
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("info", info);
+            argumentsOfScenario.Add("id", id);
+            argumentsOfScenario.Add("year", year);
+            argumentsOfScenario.Add("month", month);
+            argumentsOfScenario.Add("average rate", averageRate);
+            argumentsOfScenario.Add("revenue", revenue);
+            argumentsOfScenario.Add("popUptext", popUptext);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Edit a specific Actuals on Statistic page", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 21
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 4
+this.FeatureBackground();
+#line hidden
 #line 22
+ testRunner.When(string.Format("i click Edit button on existing actuals item \'{0}\' {1}", info, id), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 23
+ testRunner.And(string.Format("i choose year \'{0}\' and \'{1}\' month", year, month), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 24
+ testRunner.And(string.Format("i write average {0}", averageRate), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 25
+ testRunner.And(string.Format("i write revenue {0}", revenue), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 26
+ testRunner.And("i click Save button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 27
+ testRunner.Then(string.Format("i sould see confirmation popup with {0}", popUptext), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Delete a specific Actuals on Statistic page")]
+        [NUnit.Framework.CategoryAttribute("DeleteActuals")]
+        [NUnit.Framework.TestCaseAttribute("May 2026", "8", "Are you sure you want to delete this information?", "Actuals have successfully been deleted.", null)]
+        public void DeleteASpecificActualsOnStatisticPage(string info, string id, string question, string popUptext, string[] exampleTags)
+        {
+            string[] @__tags = new string[] {
+                    "DeleteActuals"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            string[] tagsOfScenario = @__tags;
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("info", info);
+            argumentsOfScenario.Add("id", id);
+            argumentsOfScenario.Add("question", question);
+            argumentsOfScenario.Add("popUptext", popUptext);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Delete a specific Actuals on Statistic page", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 35
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 4
+this.FeatureBackground();
+#line hidden
+#line 36
+ testRunner.When(string.Format("i click Delete button on existing actuals item \'{0}\' {1}", info, id), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 37
+ testRunner.And(string.Format("i click yes button on \'{0}\' window", question), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 38
  testRunner.Then(string.Format("i sould see confirmation popup with {0}", popUptext), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }

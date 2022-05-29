@@ -11,57 +11,25 @@ namespace ProjectPlanAutomation.Steps
     [Binding]
     public sealed class FinanceSteps : SetUp
     {
-        
-
-        [Given(@"i am logged into Advance")]
-        public void GivenIAmLoggedIntoAdvance()
+        [Given(@"i am Logged in and i am on Finance page on Statistics category")]
+        public void GivenIAmLoggedInAndIAmOnFinancePageOnStatisticsCategory()
         {
             logInPage.ClickLogInButton();
-      
+
             emailPage.WriteEmailText("automation.pp@amdaris.com");
             emailPage.PressNextBTN();
-    
+
             passwordPage.WritePasswdText("10704-observe-MODERN-products-STRAIGHT-69112");
             passwordPage.PressNextBTN();
 
             signedInPage.ClickYesButton();
-
-        }
-
-        [Given(@"i am on Advance home page")]
-        public void GivenIAmOnAdvanceHomePage()
-        {
-            
             homePage.GetUserHelloText("Hi Automation");
-            
-        }
-
-        [When(@"i click Finance button")]
-        public void WhenIClickFinanceButton()
-        {
             homePage.ClickFinanceBTN();
-        }
-
-        [Then(@"i should see '(.*)' tab")]
-        public void ThenIShouldSeeTab(string text)
-        {
-            
-            financePage.GetStatisticsText(text);
-        }
-
-
-        [When(@"i am on statistic page")]
-        public void WhenIAmOnStatisticPage()
-        {
-            
-            financePage.OpenActualsTab();
-        }
-
-        [When(@"i click Statistics tab")]
-        public void WhenIClickStatisticsTab()
-        {
             financePage.OpenStatisticsCategory();
+
+
         }
+
 
         [When(@"i click Add Actual button")]
         public void WhenIClickAddActualButton()
@@ -80,7 +48,6 @@ namespace ProjectPlanAutomation.Steps
         }
 
       
-
 
         [When(@"i write average (.*)")]
         public void WhenIWrite(string average)
@@ -103,8 +70,30 @@ namespace ProjectPlanAutomation.Steps
         [Then(@"i sould see confirmation popup with (.*)")]
         public void ThenISouldSeeConfirmationPopupWith(string popUptext)
         {
-            financePage.CheckConfirmationAddActuals(popUptext);
+            financePage.CheckConfirmationActuals(popUptext);
         }
+
+
+        [When(@"i click Edit button on existing actuals item '(.*)' (.*)")]
+        public void WhenIClickEditButtonOnExistingActualsItem(string info, string id)
+        {
+            financePage.FindActuals(info);
+            financePage.ClickEditActuals(id);
+
+        }
+        [When(@"i click Delete button on existing actuals item '(.*)' (.*)")]
+        public void WhenIClickDeleteButtonOnExistingActualsItem(string info, string id)
+        {
+            financePage.FindActuals(info);
+            financePage.ClickDeleteActuals(id);
+        }
+
+        [When(@"i click yes button on '(.*)' window")]
+        public void WhenIClickYesButtonOnWindow(string question)
+        {
+            financePage.CheckDeleteQuestion(question);
+        }
+
 
 
 

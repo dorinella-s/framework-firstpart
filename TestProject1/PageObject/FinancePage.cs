@@ -14,6 +14,7 @@ namespace ProjectPlanAutomation.PageObject
     {
         private string _year;
         private string _month;
+        private string _info;
         public FinancePage(IWebDriver webDriver, WebDriverWait wait)
         {
             base.webDriver = webDriver;
@@ -31,12 +32,16 @@ namespace ProjectPlanAutomation.PageObject
         private IWebElement _errorMesage => webDriver.FindElement(By.XPath("//mat-error[contains(text(),'This field is required')]"));
         private IWebElement _yearActuals => webDriver.FindElement(By.XPath("//div[contains(text(),'" + _year + "')]"));
         private IWebElement _monthActuals => webDriver.FindElement(By.XPath("//div[contains(text(),'" + _month + "')]"));
-        private By _assertAdding => By.XPath("//span[contains(text(),'Actuals have successfully been created.')]");
-        private By _assertDeleting => By.XPath("//span[.='Lead source deleted successfully']");
+        private By _assertPopUp => By.XPath("//span[contains(text(),'"+_info+"')]");
+        private By _deletequestion => By.XPath("//mat-dialog-content/p[contains(text(),'Are you sure you want to delete this information?')]");
+        private By _deleteYesBTN => By.XPath("//mat-dialog-actions[1]/button[1]");
         private IWebElement _averageRate => webDriver.FindElement(By.XPath("//form/mat-dialog-content/mat-form-field[2]/div/div[1]/div/input"));
         private IWebElement _revenue => webDriver.FindElement(By.XPath("//form/mat-dialog-content/mat-form-field[3]/div/div[1]/div[1]/input"));
         private IWebElement _saveActuals => webDriver.FindElement(By.XPath("//mat-dialog-actions/button[2]/span[contains(text(),'Save')]"));
         private IWebElement _cancelActuals => webDriver.FindElement(By.XPath("//mat-dialog-actions/button[1]/span[contains(text(),'Cancel')]"));
+        private By _actualDateItem => By.XPath("//span[contains(text(),'"+_info+"')]");
+        private IWebElement _editActual => webDriver.FindElement(By.XPath("//mat-table[1]/mat-row[" + _info + "]/mat-cell[4]/div[1]/i[1]"));
+        private IWebElement _deleteActual => webDriver.FindElement(By.CssSelector("i.fas.fa-times-circle:nth-child(2)"));
         public void OpenStatisticsCategory()
         {
             wait.Until(ExpectedConditions
@@ -80,20 +85,6 @@ namespace ProjectPlanAutomation.PageObject
                 .Click();
         }
 
-        //private Random gen = new Random();
-        //DateTime RandomDay()
-        //{
-        //    DateTime start = new DateTime(1995, 1, 1);
-        //    int range = (DateTime.Today - start).Days;
-        //    return start.AddDays(gen.Next(range));
-        //}
-        //public string GetRandomYear()
-        //{
-        //    var random = new Random();
-        //    string year = new string(Enumerable.Repeat("0123456789", 4)
-        //               .Select(s => s[random.Next(s.Length)]).ToArray());
-        //    return year;
-        //}
         public void ChooseActualsYear(string year)
         {
 
@@ -116,6 +107,10 @@ namespace ProjectPlanAutomation.PageObject
         {
             wait.Until(ExpectedConditions
                 .ElementToBeClickable(_averageRate))
+                .Clear();
+
+            wait.Until(ExpectedConditions
+                .ElementToBeClickable(_averageRate))
                 .SendKeys(average);
         }
 
@@ -123,7 +118,46 @@ namespace ProjectPlanAutomation.PageObject
         {
             wait.Until(ExpectedConditions
                 .ElementToBeClickable(_revenue))
+                .Clear();
+
+            wait.Until(ExpectedConditions
+                .ElementToBeClickable(_revenue))
                 .SendKeys(revenue);
+        }
+        public void FindActuals(string info)
+        {
+            _info = info;
+
+            wait.Until(ExpectedConditions
+            .ElementIsVisible(_actualDateItem))
+            .Click();
+        }
+        public void ClickEditActuals(string info)
+        {
+            _info = info;
+            wait.Until(ExpectedConditions
+                .ElementToBeClickable(_editActual))
+                .Click();
+        }
+
+        public void ClickDeleteActuals(string info)
+        {
+            _info = info;
+            wait.Until(ExpectedConditions
+                .ElementToBeClickable(_deleteActual))
+                .Click();
+        }
+        public void CheckDeleteQuestion(string exceptedResult)
+        {
+            _info = exceptedResult;
+            string actualResultPopUpConfirmation = wait.Until(ExpectedConditions
+                .ElementIsVisible(_deletequestion))
+                .Text;
+            Assert.AreEqual(exceptedResult, actualResultPopUpConfirmation);
+           
+            wait.Until(ExpectedConditions
+                .ElementToBeClickable(_deleteYesBTN))
+                .Click();
         }
 
         public void ClickSaveBTN()
@@ -140,10 +174,11 @@ namespace ProjectPlanAutomation.PageObject
                 .Click();
         }
 
-        public void CheckConfirmationAddActuals(string exceptedResult)
+        public void CheckConfirmationActuals(string exceptedResult)
         {
+            _info = exceptedResult;
             string actualResultPopUpConfirmation = wait.Until(ExpectedConditions
-                .ElementIsVisible(_assertAdding))
+                .ElementIsVisible(_assertPopUp))
                 .Text;
             Assert.AreEqual(exceptedResult, actualResultPopUpConfirmation);
         }
