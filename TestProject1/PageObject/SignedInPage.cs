@@ -7,7 +7,7 @@ using System.Text;
 
 namespace ProjectPlanAutomation.PageObject
 {
-    class SignedInPage : SetUp
+    public class SignedInPage : SetUp
     {
         
 

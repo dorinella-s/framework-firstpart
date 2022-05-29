@@ -8,7 +8,7 @@ using System.Text;
 
 namespace ProjectPlanAutomation.PageObject
 {
-    class HomePage : SetUp
+    public class HomePage : SetUp
     {
       
         public HomePage(IWebDriver webDriver, WebDriverWait wait)

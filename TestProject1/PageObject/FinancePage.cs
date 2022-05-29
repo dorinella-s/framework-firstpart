@@ -4,14 +4,15 @@ using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading;
 
 namespace ProjectPlanAutomation.PageObject
 {
-    class FinancePage : SetUp
+    public class FinancePage : SetUp
     {
-        private int _year;
+        private string _year;
         private string _month;
         public FinancePage(IWebDriver webDriver, WebDriverWait wait)
         {
@@ -28,10 +29,8 @@ namespace ProjectPlanAutomation.PageObject
         private IWebElement _dateInput => webDriver.FindElement(By.XPath("//input[@placeholder='Select the month and the year']"));
         private IWebElement _dateInputText => webDriver.FindElement(By.XPath("//span[contains(text(),'Select the month and the year')]"));
         private IWebElement _errorMesage => webDriver.FindElement(By.XPath("//mat-error[contains(text(),'This field is required')]"));
-        //private IWebElement _yearActuals => webDriver.FindElement(By.XPath("//div[@class='mat-calendar-body-cell-content'][contains(text(),'"+_year+"')]"));
-        //private IWebElement _monthActuals => webDriver.FindElement(By.XPath("//div[@class='mat-calendar-body-cell-content'][contains(text(),'"+_month+"')]"));
-        private IWebElement _yearActuals => webDriver.FindElement(By.XPath("//div[contains(text(),'2022')]"));
-        private IWebElement _monthActuals => webDriver.FindElement(By.XPath("//div[contains(text(),'MAY')]"));
+        private IWebElement _yearActuals => webDriver.FindElement(By.XPath("//div[contains(text(),'" + _year + "')]"));
+        private IWebElement _monthActuals => webDriver.FindElement(By.XPath("//div[contains(text(),'" + _month + "')]"));
         private By _assertAdding => By.XPath("//span[contains(text(),'Actuals have successfully been created.')]");
         private By _assertDeleting => By.XPath("//span[.='Lead source deleted successfully']");
         private IWebElement _averageRate => webDriver.FindElement(By.XPath("//form/mat-dialog-content/mat-form-field[2]/div/div[1]/div/input"));
@@ -81,15 +80,32 @@ namespace ProjectPlanAutomation.PageObject
                 .Click();
         }
 
-        public void ChooseActualsYear()
+        //private Random gen = new Random();
+        //DateTime RandomDay()
+        //{
+        //    DateTime start = new DateTime(1995, 1, 1);
+        //    int range = (DateTime.Today - start).Days;
+        //    return start.AddDays(gen.Next(range));
+        //}
+        //public string GetRandomYear()
+        //{
+        //    var random = new Random();
+        //    string year = new string(Enumerable.Repeat("0123456789", 4)
+        //               .Select(s => s[random.Next(s.Length)]).ToArray());
+        //    return year;
+        //}
+        public void ChooseActualsYear(string year)
         {
+
+            _year = year;
             wait.Until(ExpectedConditions
                 .ElementToBeClickable(_yearActuals))
                 .Click();
         }
 
-        public void ChooseActualsMonth()
+        public void ChooseActualsMonth(string month)
         {
+            _month = month;
             wait.Until(ExpectedConditions
                 .ElementToBeClickable(_monthActuals))
                 .Click();

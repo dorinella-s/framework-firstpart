@@ -11,28 +11,19 @@ namespace ProjectPlanAutomation.Steps
     [Binding]
     public sealed class FinanceSteps : SetUp
     {
-        EmailPage emailPage;
-        PasswordPage passwordPage;
-        LogInPage logInPage;
-        SignedInPage signedInPage;
-        HomePage homePage;
-        FinancePage financePage;
+        
 
         [Given(@"i am logged into Advance")]
         public void GivenIAmLoggedIntoAdvance()
         {
-            logInPage = new LogInPage(webDriver, wait);
             logInPage.ClickLogInButton();
-
-            emailPage = new EmailPage(webDriver, wait);
+      
             emailPage.WriteEmailText("automation.pp@amdaris.com");
             emailPage.PressNextBTN();
-
-            passwordPage = new PasswordPage(webDriver, wait);
+    
             passwordPage.WritePasswdText("10704-observe-MODERN-products-STRAIGHT-69112");
             passwordPage.PressNextBTN();
 
-            signedInPage = new SignedInPage(webDriver, wait);
             signedInPage.ClickYesButton();
 
         }
@@ -40,7 +31,7 @@ namespace ProjectPlanAutomation.Steps
         [Given(@"i am on Advance home page")]
         public void GivenIAmOnAdvanceHomePage()
         {
-            homePage = new HomePage(webDriver, wait);
+            
             homePage.GetUserHelloText("Hi Automation");
             
         }
@@ -54,7 +45,7 @@ namespace ProjectPlanAutomation.Steps
         [Then(@"i should see '(.*)' tab")]
         public void ThenIShouldSeeTab(string text)
         {
-            financePage = new FinancePage(webDriver, wait);
+            
             financePage.GetStatisticsText(text);
         }
 
@@ -69,7 +60,6 @@ namespace ProjectPlanAutomation.Steps
         [When(@"i click Statistics tab")]
         public void WhenIClickStatisticsTab()
         {
-            financePage = new FinancePage(webDriver, wait);
             financePage.OpenStatisticsCategory();
         }
 
@@ -80,20 +70,16 @@ namespace ProjectPlanAutomation.Steps
             financePage.GetAddActualContainerText("Add Actuals");
         }
 
-        //[When(@"i choose year (.*) and month '(.*)'")]
-        //public void WhenIChooseYearAndMonth(int year, string month)
-        //{
-            
 
-        //}
-
-        [When(@"i choose year and month")]
-        public void WhenIChooseYearAndMonth()
+        [When(@"i choose year '(.*)' and '(.*)' month")]
+        public void WhenIChooseYearAndMonth(string year, string month)
         {
             financePage.ClickToSelectDateFromField();
-            financePage.ChooseActualsYear();
-            financePage.ChooseActualsMonth();
+            financePage.ChooseActualsYear(year);
+            financePage.ChooseActualsMonth(month);
         }
+
+      
 
 
         [When(@"i write average (.*)")]

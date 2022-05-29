@@ -8,7 +8,7 @@ using System.Text;
 
 namespace ProjectPlanAutomation.PageObject
 {
-    class PasswordPage : SetUp
+    public class PasswordPage : SetUp
     {
       
         public PasswordPage(IWebDriver webDriver, WebDriverWait wait)
