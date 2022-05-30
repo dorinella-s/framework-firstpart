@@ -38,6 +38,7 @@ namespace ProjectPlanAutomation.PageObject
         private By _deleteNoBTN => By.XPath("//mat-dialog-actions[1]/button[2]");
         private IWebElement _averageRate => webDriver.FindElement(By.XPath("//form/mat-dialog-content/mat-form-field[2]/div/div[1]/div/input"));
         private IWebElement _revenue => webDriver.FindElement(By.XPath("//form/mat-dialog-content/mat-form-field[3]/div/div[1]/div[1]/input"));
+        private IWebElement _revenuValue => webDriver.FindElement(By.XPath("//div/span[contains(text(),'£')]"));
         private IWebElement _saveActuals => webDriver.FindElement(By.XPath("//mat-dialog-actions/button[2]/span[contains(text(),'Save')]"));
         private IWebElement _cancelActuals => webDriver.FindElement(By.XPath("//mat-dialog-actions/button[1]/span[contains(text(),'Cancel')]"));
         private By _actualDateItem => By.XPath("//span[contains(text(),'"+_info+"')]");
@@ -124,6 +125,11 @@ namespace ProjectPlanAutomation.PageObject
             wait.Until(ExpectedConditions
                 .ElementToBeClickable(_revenue))
                 .SendKeys(revenue);
+
+            wait.Until(ExpectedConditions
+                .ElementToBeClickable(_revenuValue))
+                .Click();
+
         }
         public void FindActuals(string info)
         {
