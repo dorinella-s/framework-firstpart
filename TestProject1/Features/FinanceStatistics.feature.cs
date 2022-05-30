@@ -10,7 +10,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace ProjectPlanAutomation.Feature
+namespace ProjectPlanAutomation.Features
 {
     using TechTalk.SpecFlow;
     using System;
@@ -35,7 +35,7 @@ namespace ProjectPlanAutomation.Feature
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Feature", "Finance Page, Statistics category", null, ProgrammingLanguage.CSharp, featureTags);
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Finance Page, Statistics category", null, ProgrammingLanguage.CSharp, featureTags);
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -85,9 +85,9 @@ namespace ProjectPlanAutomation.Feature
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Add Actuals on Statistic page")]
         [NUnit.Framework.CategoryAttribute("AddActuals")]
-        [NUnit.Framework.TestCaseAttribute("2026", "MAY", "15", "1", "Actuals have successfully been created.", null)]
-        [NUnit.Framework.TestCaseAttribute("2026", "OCT", "12.3", "13.6", "Actuals have successfully been created.", null)]
-        [NUnit.Framework.TestCaseAttribute("2026", "NOV", "0000000", "-23", "Actuals have successfully been created.", null)]
+        [NUnit.Framework.TestCaseAttribute("2026", "SEP", "15", "1", "Actuals have successfully been created.", null)]
+        [NUnit.Framework.TestCaseAttribute("2026", "AUG", "12.3", "13.6", "Actuals have successfully been created.", null)]
+        [NUnit.Framework.TestCaseAttribute("2026", "APR", "0000000", "-23", "Actuals have successfully been created.", null)]
         public void AddActualsOnStatisticPage(string year, string month, string averageRate, string revenue, string popUptext, string[] exampleTags)
         {
             string[] @__tags = new string[] {
@@ -142,8 +142,8 @@ this.FeatureBackground();
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Edit a specific Actuals on Statistic page")]
         [NUnit.Framework.CategoryAttribute("EditActuals")]
-        [NUnit.Framework.TestCaseAttribute("Mar 2019", "1", "2020", "MAY", "13", "2", "Actuals have successfully been updated.", null)]
-        public void EditASpecificActualsOnStatisticPage(string info, string id, string year, string month, string averageRate, string revenue, string popUptext, string[] exampleTags)
+        [NUnit.Framework.TestCaseAttribute("2", "2032", "JUL", "133", "-12", "Actuals have successfully been updated.", null)]
+        public void EditASpecificActualsOnStatisticPage(string id, string year, string month, string averageRate, string revenue, string popUptext, string[] exampleTags)
         {
             string[] @__tags = new string[] {
                     "EditActuals"};
@@ -153,7 +153,6 @@ this.FeatureBackground();
             }
             string[] tagsOfScenario = @__tags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            argumentsOfScenario.Add("info", info);
             argumentsOfScenario.Add("id", id);
             argumentsOfScenario.Add("year", year);
             argumentsOfScenario.Add("month", month);
@@ -175,7 +174,7 @@ this.ScenarioInitialize(scenarioInfo);
 this.FeatureBackground();
 #line hidden
 #line 24
- testRunner.When(string.Format("i click Edit button on existing actuals item \'{0}\' {1}", info, id), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When(string.Format("i click Edit button on existing actuals item \'{0}\'", id), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 25
  testRunner.And(string.Format("i choose year \'{0}\' and \'{1}\' month", year, month), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
@@ -199,8 +198,8 @@ this.FeatureBackground();
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Delete a specific Actuals on Statistic page flow1")]
         [NUnit.Framework.CategoryAttribute("DeleteActuals")]
-        [NUnit.Framework.TestCaseAttribute("May 2026", "8", "Are you sure you want to delete this information?", "Actuals have successfully been deleted.", null)]
-        public void DeleteASpecificActualsOnStatisticPageFlow1(string info, string id, string question, string popUptext, string[] exampleTags)
+        [NUnit.Framework.TestCaseAttribute("1", "Are you sure you want to delete this information?", "Actuals have successfully been deleted.", null)]
+        public void DeleteASpecificActualsOnStatisticPageFlow1(string id, string question, string popUptext, string[] exampleTags)
         {
             string[] @__tags = new string[] {
                     "DeleteActuals"};
@@ -210,7 +209,6 @@ this.FeatureBackground();
             }
             string[] tagsOfScenario = @__tags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            argumentsOfScenario.Add("info", info);
             argumentsOfScenario.Add("id", id);
             argumentsOfScenario.Add("question", question);
             argumentsOfScenario.Add("popUptext", popUptext);
@@ -229,7 +227,7 @@ this.ScenarioInitialize(scenarioInfo);
 this.FeatureBackground();
 #line hidden
 #line 38
- testRunner.When(string.Format("i click Delete button on existing actuals item \'{0}\' {1}", info, id), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When(string.Format("i click Delete button on existing actuals item \'{0}\'", id), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 39
  testRunner.And(string.Format("i click yes button on \'{0}\' window", question), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
@@ -244,7 +242,7 @@ this.FeatureBackground();
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Delete a specific Actuals on Statistic page flow2")]
         [NUnit.Framework.CategoryAttribute("DeleteActuals")]
-        [NUnit.Framework.TestCaseAttribute("Jan 2020", "1", "Are you sure you want to delete this information?", null)]
+        [NUnit.Framework.TestCaseAttribute("Jul 2021", "2", "Are you sure you want to delete this information?", null)]
         public void DeleteASpecificActualsOnStatisticPageFlow2(string info, string id, string question, string[] exampleTags)
         {
             string[] @__tags = new string[] {
@@ -273,7 +271,7 @@ this.ScenarioInitialize(scenarioInfo);
 this.FeatureBackground();
 #line hidden
 #line 48
- testRunner.When(string.Format("i click Delete button on existing actuals item \'{0}\' {1}", info, id), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When(string.Format("i click Delete button on existing actuals item \'{0}\'", id), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 49
  testRunner.And(string.Format("i click no button on \'{0}\' window", question), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
@@ -311,7 +309,7 @@ this.FeatureBackground();
             argumentsOfScenario.Add("revenue", revenue);
             argumentsOfScenario.Add("errorMessage", errorMessage);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("UnSuccessful Add Actuals on Statistic page", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 57
+#line 58
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -324,19 +322,19 @@ this.ScenarioInitialize(scenarioInfo);
 #line 4
 this.FeatureBackground();
 #line hidden
-#line 58
+#line 59
  testRunner.When("i click Add Actual button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 59
+#line 60
  testRunner.And(string.Format("i choose year \'{0}\' and \'{1}\' month", year, month), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 60
+#line 61
  testRunner.And(string.Format("i write average {0}", averageRate), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 61
+#line 62
  testRunner.And(string.Format("i write revenue {0}", revenue), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 62
+#line 63
  testRunner.Then(string.Format("i sould see error message \'{0}\'", errorMessage), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }

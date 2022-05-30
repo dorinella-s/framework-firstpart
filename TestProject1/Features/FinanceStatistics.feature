@@ -15,13 +15,13 @@ Scenario Outline: Add Actuals on Statistic page
 
 	Examples: 
 	| year | month | average rate | revenue | popUptext                               |
-	| 2026 | MAY   | 15           | 1       | Actuals have successfully been created. |
-	| 2026 | OCT   | 12.3         | 13.6    | Actuals have successfully been created. |
-	| 2026 | NOV   | 0000000      | -23     | Actuals have successfully been created. |
+	| 2026 | SEP   | 15           | 1       | Actuals have successfully been created. |
+	| 2026 | AUG   | 12.3         | 13.6    | Actuals have successfully been created. |
+	| 2026 | APR   | 0000000      | -23     | Actuals have successfully been created. |
 	
 @EditActuals
 Scenario Outline: Edit a specific Actuals on Statistic page
-	When i click Edit button on existing actuals item '<info>' <id>
+	When i click Edit button on existing actuals item '<id>'
 	And i choose year '<year>' and '<month>' month 
 	And i write average <average rate>
 	And i write revenue <revenue>
@@ -29,29 +29,30 @@ Scenario Outline: Edit a specific Actuals on Statistic page
 	Then i sould see confirmation popup with <popUptext>
 
 	Examples:
-	| info     | id | year | month | average rate | revenue | popUptext                               |
-	| Mar 2019 | 1  | 2020 | MAY   | 13           | 2       | Actuals have successfully been updated. |
+	| id | year | month | average rate | revenue | popUptext                               |
+	| 2  | 2032 | JUL   | 133          | -12     | Actuals have successfully been updated. |
 
 
 @DeleteActuals
 Scenario Outline: Delete a specific Actuals on Statistic page flow1
-	When i click Delete button on existing actuals item '<info>' <id>
+	When i click Delete button on existing actuals item '<id>'
 	And i click yes button on '<question>' window 
 	Then i sould see confirmation popup with <popUptext>
 
 	Examples:
-	| info     | id | question                                          | popUptext                               |
-	| May 2026 | 8  | Are you sure you want to delete this information? | Actuals have successfully been deleted. |
+	| id | question                                          | popUptext                               |
+	| 1  | Are you sure you want to delete this information? | Actuals have successfully been deleted. |
 
 @DeleteActuals
 Scenario Outline: Delete a specific Actuals on Statistic page flow2
-	When i click Delete button on existing actuals item '<info>' <id>
+	When i click Delete button on existing actuals item '<id>'
 	And i click no button on '<question>' window 
 	Then i sould see the specific '<info>' Actuals on Statistic page
 
 	Examples:
 	| info     | id | question                                          |
-	| Jan 2020 | 1  | Are you sure you want to delete this information? |
+	| Jul 2021 | 2  | Are you sure you want to delete this information? |
+	
 
 @AddActualsWithInvalidData
 Scenario Outline: UnSuccessful Add Actuals on Statistic page

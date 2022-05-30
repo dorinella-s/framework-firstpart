@@ -74,17 +74,17 @@ namespace ProjectPlanAutomation.Steps
         }
 
 
-        [When(@"i click Edit button on existing actuals item '(.*)' (.*)")]
-        public void WhenIClickEditButtonOnExistingActualsItem(string info, string id)
+        [When(@"i click Edit button on existing actuals item '(.*)'")]
+        public void WhenIClickEditButtonOnExistingActualsItem(string id)
         {
-            financePage.FindActuals(info);
+            //financePage.FindActuals(id);
             financePage.ClickEditActuals(id);
 
         }
-        [When(@"i click Delete button on existing actuals item '(.*)' (.*)")]
-        public void WhenIClickDeleteButtonOnExistingActualsItem(string info, string id)
+        [When(@"i click Delete button on existing actuals item '(.*)'")]
+        public void WhenIClickDeleteButtonOnExistingActualsItem(string id)
         {
-            financePage.FindActuals(info);
+            //financePage.FindActuals(info);
             financePage.ClickDeleteActuals(id);
         }
 
