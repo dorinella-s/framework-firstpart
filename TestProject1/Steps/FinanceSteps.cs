@@ -94,10 +94,22 @@ namespace ProjectPlanAutomation.Steps
             financePage.CheckDeleteQuestion(question);
         }
 
+        [When(@"i click no button on '(.*)' window")]
+        public void WhenIClickNoButtonOnWindow(string question)
+        {
+            financePage.CheckDeleteQuestionAndClickNO(question);
+        }
 
+        [Then(@"i sould see the specific '(.*)' Actuals on Statistic page")]
+        public void ThenISouldSeeTheSpecificActualsOnStatisticPage(string info)
+        {
+            financePage.FindActuals(info);
+        }
 
-
-
-
+        [Then(@"i sould see error message '(.*)'")]
+        public void ThenISouldSeeErrorMessage(string errorMessage)
+        {
+            financePage.CheckErrorMessage(errorMessage);
+        }
     }
 }

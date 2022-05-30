@@ -423,4 +423,3 @@ D:\InternshipTask\editframework\framework-firstpart\TestProject1\obj\Debug\netco
 D:\InternshipTask\editframework\framework-firstpart\TestProject1\obj\Debug\netcoreapp3.1\ProjectPlanAutomation.dll
 D:\InternshipTask\editframework\framework-firstpart\TestProject1\obj\Debug\netcoreapp3.1\ProjectPlanAutomation.pdb
 D:\InternshipTask\editframework\framework-firstpart\TestProject1\obj\Debug\netcoreapp3.1\ProjectPlanAutomation.genruntimeconfig.cache
-D:\InternshipTask\editframework\framework-firstpart\TestProject1\obj\Debug\netcoreapp3.1\ProjectPlanAutomation.csproj.AssemblyReference.cache

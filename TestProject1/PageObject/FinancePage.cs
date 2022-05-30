@@ -35,6 +35,7 @@ namespace ProjectPlanAutomation.PageObject
         private By _assertPopUp => By.XPath("//span[contains(text(),'"+_info+"')]");
         private By _deletequestion => By.XPath("//mat-dialog-content/p[contains(text(),'Are you sure you want to delete this information?')]");
         private By _deleteYesBTN => By.XPath("//mat-dialog-actions[1]/button[1]");
+        private By _deleteNoBTN => By.XPath("//mat-dialog-actions[1]/button[2]");
         private IWebElement _averageRate => webDriver.FindElement(By.XPath("//form/mat-dialog-content/mat-form-field[2]/div/div[1]/div/input"));
         private IWebElement _revenue => webDriver.FindElement(By.XPath("//form/mat-dialog-content/mat-form-field[3]/div/div[1]/div[1]/input"));
         private IWebElement _saveActuals => webDriver.FindElement(By.XPath("//mat-dialog-actions/button[2]/span[contains(text(),'Save')]"));
@@ -42,6 +43,7 @@ namespace ProjectPlanAutomation.PageObject
         private By _actualDateItem => By.XPath("//span[contains(text(),'"+_info+"')]");
         private IWebElement _editActual => webDriver.FindElement(By.XPath("//mat-table[1]/mat-row[" + _info + "]/mat-cell[4]/div[1]/i[1]"));
         private IWebElement _deleteActual => webDriver.FindElement(By.CssSelector("i.fas.fa-times-circle:nth-child(2)"));
+        private By _errorMessage => By.XPath("//mat-error[contains(text(),'" + _info + "')]");
         public void OpenStatisticsCategory()
         {
             wait.Until(ExpectedConditions
@@ -50,12 +52,12 @@ namespace ProjectPlanAutomation.PageObject
             Thread.Sleep(2000);
         }
 
-        public void GetStatisticsText(string exceptedResult)
+        public void GetStatisticsText(string expectedResult)
         {
             string actualResultStartText = wait.Until(ExpectedConditions
                 .ElementIsVisible(_statisticsCategory))
                 .Text;
-            Assert.AreEqual(exceptedResult, actualResultStartText);
+            Assert.AreEqual(expectedResult, actualResultStartText);
         }
 
         public void OpenActualsTab()
@@ -63,7 +65,6 @@ namespace ProjectPlanAutomation.PageObject
             wait.Until(ExpectedConditions
                 .ElementToBeClickable(_actualsTab))
                 .Click();
-
         }
         public void ClickAddActualsBTN()
         {
@@ -71,12 +72,12 @@ namespace ProjectPlanAutomation.PageObject
                 .ElementToBeClickable(_addActualsBTN))
                 .Click();
         }
-        public void GetAddActualContainerText(string exceptedResult)
+        public void GetAddActualContainerText(string expectedResult)
         {
             string actualResultStartText = wait.Until(ExpectedConditions
                 .ElementIsVisible(_addActualsText))
                 .Text;
-            Assert.AreEqual(exceptedResult, actualResultStartText);
+            Assert.AreEqual(expectedResult, actualResultStartText);
         }
         public void ClickToSelectDateFromField()
         {
@@ -128,9 +129,10 @@ namespace ProjectPlanAutomation.PageObject
         {
             _info = info;
 
-            wait.Until(ExpectedConditions
+            string actualResultElement = wait.Until(ExpectedConditions
             .ElementIsVisible(_actualDateItem))
-            .Click();
+            .Text;
+            Assert.AreEqual(info, actualResultElement);
         }
         public void ClickEditActuals(string info)
         {
@@ -147,16 +149,28 @@ namespace ProjectPlanAutomation.PageObject
                 .ElementToBeClickable(_deleteActual))
                 .Click();
         }
-        public void CheckDeleteQuestion(string exceptedResult)
+        public void CheckDeleteQuestion(string expectedResult)
         {
-            _info = exceptedResult;
+            _info = expectedResult;
             string actualResultPopUpConfirmation = wait.Until(ExpectedConditions
                 .ElementIsVisible(_deletequestion))
                 .Text;
-            Assert.AreEqual(exceptedResult, actualResultPopUpConfirmation);
+            Assert.AreEqual(expectedResult, actualResultPopUpConfirmation);
            
             wait.Until(ExpectedConditions
                 .ElementToBeClickable(_deleteYesBTN))
+                .Click();
+        }
+        public void CheckDeleteQuestionAndClickNO(string expectedResult)
+        {
+            _info = expectedResult;
+            string actualResultPopUpConfirmation = wait.Until(ExpectedConditions
+                .ElementIsVisible(_deletequestion))
+                .Text;
+            Assert.AreEqual(expectedResult, actualResultPopUpConfirmation);
+
+            wait.Until(ExpectedConditions
+                .ElementToBeClickable(_deleteNoBTN))
                 .Click();
         }
 
@@ -174,13 +188,22 @@ namespace ProjectPlanAutomation.PageObject
                 .Click();
         }
 
-        public void CheckConfirmationActuals(string exceptedResult)
+        public void CheckConfirmationActuals(string expectedResult)
         {
-            _info = exceptedResult;
+            _info = expectedResult;
             string actualResultPopUpConfirmation = wait.Until(ExpectedConditions
                 .ElementIsVisible(_assertPopUp))
                 .Text;
-            Assert.AreEqual(exceptedResult, actualResultPopUpConfirmation);
+            Assert.AreEqual(expectedResult, actualResultPopUpConfirmation);
+        }
+
+        public void CheckErrorMessage(string expectedResult)
+        {
+            _info = expectedResult;
+            string actualResultError = wait.Until(ExpectedConditions
+                .ElementIsVisible(_errorMessage))
+                .Text;
+            Assert.That(actualResultError, Does.Contain(expectedResult).IgnoreCase);
         }
     }
 }
